@@ -110,11 +110,12 @@ jobs:
       - name: Verify files
         run: ls Cypress/_site
 
+      # @todo: Cache node modules
       - name: Install Cypress
         run: cd Cypress/_site && npm install cypress --save-dev
 
       - name: Run Cypress tests
-        run: cd Cypress && cypress run
+        run: cd Cypress && npx cypress run
 
       - name: Upload Cypress artifacts
         uses: actions/upload-artifact@v3
