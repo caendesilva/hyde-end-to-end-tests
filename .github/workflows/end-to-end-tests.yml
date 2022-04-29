@@ -79,7 +79,12 @@ jobs:
         run: bash publish-stubs.sh
 
       - name: Publish post feed homepage
-        run:  php hyde publish:homepage posts --no-interaction
+        run: |
+          cd hyde
+          cp _pages/index.blade.php _pages/homepage.blade.php  
+          php hyde publish:homepage posts --no-interaction
+          mv _pages/index.blade.php _pages/posts.blade.php  
+          mv _pages/homepage.blade.php _pages/index.blade.php  
 
       - name: Build static site
         run: cd hyde && php hyde build --pretty --run-prod
