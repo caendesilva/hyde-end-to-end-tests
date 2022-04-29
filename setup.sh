@@ -47,15 +47,21 @@ if [ "$PRESERVE" = false ]; then
 	log "Changing to hyde directory..."
 	cd hyde
 
-	log "Updating composer dependencies..."
+	log "Updating Composer dependencies..."
 	composer update
 
 	log "Installing the latest Framework version..."
 	composer require hyde/framework:dev-master
 
 	# @todo cache dependencies
-	log "Installing Hyde dependencies..."
+	log "Installing Composer dependencies..."
 	composer install
+
+	log "Updating Node dependencies..."
+	npm update
+
+	log "Installing Node dependencies..."
+	npm install
 
 	log "Switching back to the root directory..."
 	cd ../
