@@ -27,7 +27,10 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: hyde-environment
-          path: hyde
+          path: |
+            hyde
+            !vendor
+            !node_modules
 
   run-tests:
     runs-on: ubuntu-latest
