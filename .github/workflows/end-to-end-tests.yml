@@ -43,6 +43,9 @@ jobs:
           name: hyde-environment
           path: hyde
 
+      - name: Install dependencies from lock file
+        run: cd hyde && composer install
+
       - name: Run tests
         run: cd hyde && php hyde test
 
