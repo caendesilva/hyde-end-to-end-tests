@@ -121,4 +121,4 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: cypress-videos
-          path: Cypress\cypress\videos
+          path: Cypress/cypress/videos
