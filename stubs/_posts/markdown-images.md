@@ -1,6 +1,6 @@
 ---
-title: My New Post
-description: A short description used in previews and SEO
+title: Markdown with Images
+description: Contains more Markdown types, and a featured image
 category: blog
 author: Mr. Hyde
 date: 2022-04-12 17:55
