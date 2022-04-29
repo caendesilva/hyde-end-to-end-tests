@@ -54,7 +54,7 @@ jobs:
       - name: Run PHPUnit tests
         run: cd hyde && vendor/bin/pest
 
-  run-cypress-tests:
+  build-static-site:
     runs-on: ubuntu-latest
     needs: build
     steps:
@@ -66,13 +66,39 @@ jobs:
           name: hyde-environment
           path: hyde
 
-      - name: Install dependencies from lock file
+      - name: Install composer dependencies from lock file
         run: cd hyde && composer install
+      
+      - name: Install Node Modules
+        run: cd hyde && npm install
+
+      - name: Todo - download latest hydefront version
+        run: echo Not yet implemented.
 
       - name: Publish test files
         run: bash publish-stubs.sh
 
+      - name: Build static site
+        run: cd hyde && php hyde build --pretty --run-prod
+
+      - name: Upload static site artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: hyde-compiled-static-site
+          path: hyde/_site
+  
+  run-cypress-tests:
+    runs-on: ubuntu-latest
+    needs: build-static-site
+    steps:
+      - name: Download Artifacts
+        uses: actions/download-artifact@v3
+        with:
+          name: hyde-compiled-static-site
+
+      - name: Verify files
+        run: ls
+
       - name: Run Cypress tests
         run: echo Not yet implemented.
         # run: cd hyde && npm run cypress:run
-  
