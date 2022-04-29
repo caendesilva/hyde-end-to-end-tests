@@ -47,6 +47,9 @@ if [ "$PRESERVE" = false ]; then
 	log "Changing to hyde directory..."
 	cd hyde
 
+	log "Updating composer dependencies..."
+	composer update
+
 	log "Installing the latest Framework version..."
 	composer require hyde/framework:dev-master
 
