@@ -1,4 +1,5 @@
 # Hyde End-to-End Testing Repo (WIP)
+## Playground for full suite testing of HydePHP
 
 ## Usage
 
