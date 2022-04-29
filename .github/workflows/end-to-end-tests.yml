@@ -1,0 +1,27 @@
+name: End to End Test Suite
+
+on:
+  push:
+    branches: [ master ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      # Check if a cache matching the checksums of all repos being tested exists
+      - name: Check if a cache exists
+        run: echo Not yet implemented.
+
+      - name: Setup Hyde environment
+        run: bash setup.sh
+
+      - name: Cache Hyde environment
+        run: echo Not yet implemented.
+
+      - name: Upload artifacts
+        run: echo Not yet implemented.
