@@ -7,18 +7,42 @@
 
 describe('Test the dark mode switcher', () => {
 	it('Visits the blog page', () => {
-		cy.visit('/_site/posts.html')
+		cy.visit('/_site/posts.html', {
+			onBeforeLoad: (win) => {
+				cy.stub(win.matchMedia = () => ({
+					matches: true,
+					addListener: () => { },
+					removeListener: () => { }
+				}))
+			}
+		})
 		cy.contains('Latest Posts')
 	});
 
 	it('Checks that the dark mode switcher is present', () => {
-		cy.visit('/_site/posts.html')
+		cy.visit('/_site/posts.html', {
+			onBeforeLoad: (win) => {
+				cy.stub(win.matchMedia = () => ({
+					matches: true,
+					addListener: () => { },
+					removeListener: () => { }
+				}))
+			}
+		})
 		cy.get('[title="Toggle theme"]').should('exist')
 	});
 
 	// Assumes dark mode is default
 	it('Checks that the theme is switched when triggering the button', () => {
-		cy.visit('/_site/posts.html')
+		cy.visit('/_site/posts.html', {
+			onBeforeLoad: (win) => {
+				cy.stub(win.matchMedia = () => ({
+					matches: true,
+					addListener: () => { },
+					removeListener: () => { }
+				}))
+			}
+		})
 		cy.get('[title="Toggle theme"]').click()
 		cy.get('html').should('not.have.class', 'dark')
 
@@ -28,7 +52,15 @@ describe('Test the dark mode switcher', () => {
 
 	// Check that the selected theme persists when reloading the page
 	it('Checks that the theme is persisted when reloading the page', () => {
-		cy.visit('/_site/posts.html')
+		cy.visit('/_site/posts.html', {
+			onBeforeLoad: (win) => {
+				cy.stub(win.matchMedia = () => ({
+					matches: true,
+					addListener: () => { },
+					removeListener: () => { }
+				}))
+			}
+		})
 		cy.get('[title="Toggle theme"]').click()
 		cy.reload()
 		cy.get('html').should('not.have.class', 'dark')
@@ -36,17 +68,41 @@ describe('Test the dark mode switcher', () => {
 
 	// Check that the theme is persisted when navigating to another page
 	it('Checks that the theme is persisted when navigating to another page', () => {
-		cy.visit('/_site/posts.html')
+		cy.visit('/_site/posts.html', {
+			onBeforeLoad: (win) => {
+				cy.stub(win.matchMedia = () => ({
+					matches: true,
+					addListener: () => { },
+					removeListener: () => { }
+				}))
+			}
+		})
 		cy.get('[title="Toggle theme"]').click()
 		cy.visit('/_site/markdown-page.html')
 		cy.get('html').should('not.have.class', 'dark')
-		cy.visit('/_site/posts.html')
+		cy.visit('/_site/posts.html', {
+			onBeforeLoad: (win) => {
+				cy.stub(win.matchMedia = () => ({
+					matches: true,
+					addListener: () => { },
+					removeListener: () => { }
+				}))
+			}
+		})
 		cy.get('html').should('not.have.class', 'dark')
 	});
 
 	// Check that the selected theme is stored in localstorage
 	it('Checks that the theme is stored in localstorage', () => {
-		cy.visit('/_site/posts.html')
+		cy.visit('/_site/posts.html', {
+			onBeforeLoad: (win) => {
+				cy.stub(win.matchMedia = () => ({
+					matches: true,
+					addListener: () => { },
+					removeListener: () => { }
+				}))
+			}
+		})
 		expect(localStorage.getItem("color-theme")).to.eq(null);
 		cy.get('[title="Toggle theme"]').click().should(() => {
 			expect(localStorage.getItem("color-theme")).to.eq('light');
