@@ -7,7 +7,7 @@
     <h1>Blade page with HTML support</h1>
     <div id="php">
         @php
-            echo "Can run arbitrary PHP"    
+            echo "Can run arbitrary PHP";    
 
             $array = [
                 'key' => 'value',
