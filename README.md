@@ -9,3 +9,9 @@ Run the setup script to create the test repo.
 ```bash
 $ bash setup.sh
 ```
+
+Publish the test stubs to the test repo.
+
+```bash
+$ bash publish-stubs.sh
+```
