@@ -17,13 +17,13 @@ jobs:
       - name: Check if a cache exists
         run: echo Not yet implemented.
 
-      - name: Setup Hyde environment
+      - name: Setup Hyde Environment
         run: bash setup.sh
 
-      - name: Cache Hyde environment
+      - name: Cache Hyde Environment
         run: echo Not yet implemented.
 
-      - name: Upload Artifacts
+      - name: Upload Environment Artifacts
         uses: actions/upload-artifact@v3
         with:
           name: hyde-environment
@@ -31,6 +31,11 @@ jobs:
             hyde
             !hyde/vendor
             !hyde/node_modules
+      - name: Upload Setup Log
+        uses: actions/upload-artifact@v3
+        with:
+          name: hyde-setup-script.log
+          path: latest.log
 
   run-phpunit-tests:
     runs-on: ubuntu-latest
