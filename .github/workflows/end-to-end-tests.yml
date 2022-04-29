@@ -78,6 +78,9 @@ jobs:
       - name: Publish test files
         run: bash publish-stubs.sh
 
+      - name: Publish post feed homepage
+        run:  php hyde publish:homepage posts --no-interaction
+
       - name: Build static site
         run: cd hyde && php hyde build --pretty --run-prod
 
