@@ -112,7 +112,7 @@ jobs:
 
       # @todo: Cache node modules
       - name: Install Cypress
-        run: cd Cypress/_site && npm install cypress --save-dev
+        run: cd Cypress && npm install cypress --save-dev
 
       - name: Run Cypress tests
         run: cd Cypress && npx cypress run
